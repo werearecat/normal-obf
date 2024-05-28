@@ -1,0 +1,55 @@
+import string
+readme = "\nhai1723 OBF it not good,But very hard read it\ni am hai1723\ndiscord:https://discord.gg/DKFjFuKKCj"
+
+def deobfuscate(code):
+    obfuscated_code = code.translate(str.maketrans('\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d', '\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a'))
+    return obfuscated_code
+
+from Crypto.PublicKey import RSA
+from Crypto.Cipher import AES, PKCS1_OAEP
+from base64 import b64decode
+
+# XOR decryption
+def xor_encrypt_decrypt(data, key):
+    key_bytes = key.encode()
+    return bytes([b ^ key_bytes[i % len(key_bytes)] for i, b in enumerate(data)])
+
+# AES decryption
+def aes_decrypt(encrypted_data, aes_key):
+    nonce = encrypted_data[:16]
+    ciphertext = encrypted_data[16:]
+    cipher = AES.new(aes_key, AES.MODE_EAX, nonce=nonce)
+    plaintext = cipher.decrypt(ciphertext)
+    return plaintext
+
+# Decrypt AES key with RSA
+def rsa_decrypt(encrypted_aes_key, private_key):
+    rsa_cipher = PKCS1_OAEP.new(RSA.import_key(private_key))
+    aes_key = rsa_cipher.decrypt(encrypted_aes_key)
+    return aes_key
+
+def decrypt_data(encrypted_data, private_key, xor_key):
+    encrypted_data = b64decode(encrypted_data)
+
+    encrypted_aes_key = encrypted_data[:256]
+    encrypted_content = encrypted_data[256:]
+
+    aes_key = rsa_decrypt(encrypted_aes_key, private_key)
+    xor_decrypted_data = xor_encrypt_decrypt(encrypted_content, xor_key)
+    decrypted_data = aes_decrypt(xor_decrypted_data, aes_key)
+
+    return decrypted_data
+
+
+def main():
+    encrypted_data = deobfuscate("%encrypted_data%")
+    private_key = deobfuscate("%private_key%")
+    xor_key = deobfuscate("%xor_key%")
+
+    decrypted_data = decrypt_data(encrypted_data, private_key, xor_key)
+    compiled_code = compile(decrypted_data, '<string>', 'exec')
+    # Execute decrypted code
+    exec(compiled_code)
+
+if __name__ == "__main__":
+    main()

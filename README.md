@@ -9,4 +9,7 @@
 # .
 
 minify output obf
+
 XOR,AES
+
+base64 encode

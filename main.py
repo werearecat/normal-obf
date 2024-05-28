@@ -5,7 +5,6 @@ from python_minifier import minify
 import os
 import random
 import string
-import threading
 import time
 
 def minify_python_file(input_file, output_file):

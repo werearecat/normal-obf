@@ -8,9 +8,6 @@ import string
 import threading
 import time
 
-def random_chinese_string(length):
-    return ''.join(random.choices(string.ascii_letters, k=length))
-
 def minify_python_file(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as file:
         original_code = file.read()
@@ -19,6 +16,9 @@ def minify_python_file(input_file, output_file):
 
     with open(output_file, 'w', encoding='utf-8') as file:
         file.write(minified_code)
+
+def random_chinese_string(length):
+    return ''.join(random.choices(string.ascii_letters, k=length))
 
 def obfuscate_python_code(code):
     obfuscated_code = code.translate(str.maketrans('abcdefghijklmnopqrstuvwxyz', 'nopqrstuvwxyzabcdefghijklm'))
@@ -56,8 +56,8 @@ def rsa_encrypt(aes_key, public_key):
     return encrypted_aes_key
 
 def encrypt_file(file_path, public_key, xor_key):
-    with open(file_path, 'rb', encoding='utf-8') as file:
-        file_data = minify(file.read())
+    with open(file_path, 'rb') as file:
+        file_data = file.read()
 
     aes_key = os.urandom(32)
     encrypted_data = aes_encrypt(file_data, aes_key)
@@ -92,9 +92,11 @@ def generate_decrypt_script(private_key, xor_key, encrypted_data):
 
 
 def main():
-    file_path = 'input.txt'
+    filepa = 'input.txt'
+    file_path = 'inputmini'
+    minify_python_file(filepa, file_path)
 
-    minify_python_file(file_path, file_path)
+
     private_key, public_key = generate_rsa_keys()
     xor_key = random_chinese_string(5)
     encrypted_data = encrypt_file(file_path, public_key, xor_key)

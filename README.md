@@ -6,7 +6,7 @@
 
 3.output obf: decrypt.py
 
-# .
+# code
 
 minify output obf
 

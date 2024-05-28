@@ -20,7 +20,7 @@ def compare_files(local_file_path, remote_file_url):
 
     if local_content != remote_content:
         print("open site update")
-        webbrowser.open('https://github.com/hai1723s/discord-message-spammer')
+        webbrowser.open('https://github.com/werearecat/normal-obf/')
         os.system("pause")
         sys.exit()
     else:

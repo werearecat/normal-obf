@@ -5,3 +5,8 @@
 2.run main.py
 
 3.output obf: decrypt.py
+
+# .
+
+minify output obf
+XOR,AES

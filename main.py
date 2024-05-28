@@ -2,6 +2,7 @@ from Crypto.PublicKey import RSA
 from Crypto.Cipher import AES, PKCS1_OAEP
 from base64 import b64encode, b64decode
 from python_minifier import minify
+from Extras.check import *
 import os
 import random
 import string

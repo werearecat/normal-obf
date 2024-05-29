@@ -128,6 +128,8 @@ def main():
     generate_decrypt_script(private_key, xor_key, encrypted_data)
     
     print("Encryption complete. Decryption script saved to 'decrypt.py'.")
-
+    os.remove(file_path)
+ 
+    
 if __name__ == "__main__":
     main()

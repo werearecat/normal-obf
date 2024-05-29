@@ -1,5 +1,14 @@
 import string
-readme = "\nhai1723 OBF it not good,But very hard read it\ni am hai1723\ndiscord:https://discord.gg/DKFjFuKKCj\nhttps://github.com/werearecat/normal-obf"
+readme = '''
+
+hai1723 OBF it not good,But very hard read it
+i am hai1723
+discord:https://discord.gg/DKFjFuKKCj
+https://github.com/werearecat/normal-obf
+Warning: I not responsible you action
+
+
+'''
 print(readme)
 def deobfuscate(code):
     obfuscated_code = code.translate(str.maketrans('\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d', '\x61\x62\x63\x64\x65\x66\x67\x68\x69\x6a\x6b\x6c\x6d\x6e\x6f\x70\x71\x72\x73\x74\x75\x76\x77\x78\x79\x7a'))

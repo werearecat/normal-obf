@@ -51,12 +51,13 @@ def decrypt_data(encrypted_data, private_key, xor_key):
 
     return decrypted_data
 
-
-def main():
+class SafeString:
     encrypted_data = deobfuscate("%encrypted_data%")
     private_key = deobfuscate("%private_key%")
     xor_key = deobfuscate("%xor_key%")
 
+
+def main():
     decrypted_data = decrypt_data(encrypted_data, private_key, xor_key)
     compiled_code = compile(decrypted_data, '<string>', 'exec')
     # Execute decrypted code

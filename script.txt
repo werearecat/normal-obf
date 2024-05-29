@@ -1,4 +1,6 @@
 import string
+import marshal
+
 readme = '''
 
 hai1723 OBF it not good,But very hard read it

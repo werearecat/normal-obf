@@ -113,7 +113,6 @@ def generate_decrypt_script(private_key, xor_key, encrypted_data):
 def main():
     filepa = 'input.txt'
     file_path = 'inputmini'
-    minify_python_file(filepa, file_path)
     compile_and_marshal(file_path, file_path)
     compile_and_marshal(file_path, file_path)
     compile_and_marshal(file_path, file_path)

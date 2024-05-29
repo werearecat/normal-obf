@@ -128,7 +128,7 @@ try:
             file.write(scriptt)
     
     
-    try:
+    def main():
         input = 'input.txt'
         file_path = 'inputmini'
         compile_and_marshal(input, file_path)
@@ -143,7 +143,8 @@ try:
         # Generate decryption script
         generate_decrypt_script(private_key, xor_key, encrypted_data)
         logger.debug("Encryption complete. Decryption script saved to 'decrypt.py'.")
-    except Exception as e:
-        logger.error(f"{e}")
+    main()
+
+   
 except Exception as e:
     logger.error(f"{e}")

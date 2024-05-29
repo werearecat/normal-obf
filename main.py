@@ -145,7 +145,6 @@ try:
         file_path = 'inputmini'
         compile_and_marshal(input, file_path)
         compile_and_marshal(file_path, file_path)
-        compile_and_marshal(file_path, file_path)
     
     
         private_key, public_key = generate_rsa_keys()

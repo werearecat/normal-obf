@@ -7,8 +7,23 @@ import random
 import string
 import time
 import marshal
+from loguru import logger
 
+logger.add("log.log")
 
+def find_and_write_imports(input_file, output_file):
+    imports = []
+    with open(input_file, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if line.startswith("from"):
+                imports.append(line.strip())
+
+    # Ghi các câu lệnh from import lên đầu của tệp văn bản mới
+    with open(output_file, 'w') as file:
+        for imp in imports:
+            file.write(imp + '\n')
+        file.write('\n')
 
 def compile_and_marshal(input_file, output_file):
     # Đọc nội dung từ tệp .py
@@ -27,7 +42,7 @@ def compile_and_marshal(input_file, output_file):
     with open(output_file, 'wb') as file:
         file.write(marshalled_code.encode('utf-8'))
 
-    print(f"Mã từ file {input_file} đã được biên dịch và tuần tự hóa, và được ghi vào {output_file}")
+    logger.debug(f"Mã từ file {input_file} đã được biên dịch và tuần tự hóa, và được ghi vào {output_file}")
 
 def minify_python_file(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as file:
@@ -49,7 +64,7 @@ def string_to_hex(string):
     string = obfuscate_python_code(string)
     return ''.join(f'\\x{ord(c):02x}' for c in string)
 
-print(string.digits + string.punctuation)
+logger.debug(string.digits + string.punctuation)
 
 def generate_rsa_keys():
     key = RSA.generate(2048)
@@ -112,7 +127,7 @@ def generate_decrypt_script(private_key, xor_key, encrypted_data):
         file.write(scriptt)
 
 
-def main():
+try:
     input = 'input.txt'
     file_path = 'inputmini'
     compile_and_marshal(input, file_path)
@@ -126,10 +141,6 @@ def main():
 
     # Generate decryption script
     generate_decrypt_script(private_key, xor_key, encrypted_data)
-    
-    print("Encryption complete. Decryption script saved to 'decrypt.py'.")
-    os.remove(file_path)
- 
-    
-if __name__ == "__main__":
-    main()
+    logger.debug("Encryption complete. Decryption script saved to 'decrypt.py'.")
+except Exception as e:
+    logger.error(f"{e}")

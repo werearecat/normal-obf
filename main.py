@@ -8,7 +8,19 @@ import string
 import time
 import marshal
 from loguru import logger
+import sys
 logger.add("log.log")
+logger.add(sys.stdout, colorize=True, format="<green>{time}</green> <level>{message}</level>")
+logger.warning(f'''
+
+hai1723 OBF it not good,But very hard read it
+i am hai1723
+discord:https://discord.gg/DKFjFuKKCj
+https://github.com/werearecat/normal-obf
+Warning: I not responsible you action
+
+
+''')
 try:
     
     

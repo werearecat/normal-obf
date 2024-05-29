@@ -8,6 +8,20 @@ import string
 import time
 import marshal
 
+def find_and_write_imports(input_file, output_file):
+    imports = []
+    with open(input_file, 'r') as file:
+        lines = file.readlines()
+        for line in lines:
+            if line.startswith("from"):
+                imports.append(line.strip())
+
+    # Ghi các câu lệnh from import lên đầu của tệp văn bản mới
+    with open(output_file, 'w') as file:
+        for imp in imports:
+            file.write(imp + '\n')
+        file.write('\n')
+
 def compile_and_marshal(input_file, output_file):
     # Đọc nội dung từ tệp .py
     with open(input_file, 'r') as file:
@@ -111,9 +125,9 @@ def generate_decrypt_script(private_key, xor_key, encrypted_data):
 
 
 def main():
-    filepa = 'input.txt'
+    input = 'input.txt'
     file_path = 'inputmini'
-    compile_and_marshal(file_path, file_path)
+    compile_and_marshal(input, file_path)
     compile_and_marshal(file_path, file_path)
     compile_and_marshal(file_path, file_path)
 
@@ -124,8 +138,10 @@ def main():
 
     # Generate decryption script
     generate_decrypt_script(private_key, xor_key, encrypted_data)
-
+    
     print("Encryption complete. Decryption script saved to 'decrypt.py'.")
+    find_and_write_imports(input, 'decrypt.py')
+    print("write import complete.")
 
 if __name__ == "__main__":
     main()

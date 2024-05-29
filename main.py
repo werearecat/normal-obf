@@ -2,11 +2,29 @@ from Crypto.PublicKey import RSA
 from Crypto.Cipher import AES, PKCS1_OAEP
 from base64 import b64encode, b64decode
 from python_minifier import minify
-from Extras.check import *
 import os
 import random
 import string
 import time
+import marshal
+
+def compile_and_marshal(input_file, output_file):
+    # Đọc nội dung từ tệp .py
+    with open(input_file, 'r') as file:
+        source_code = file.read()
+
+    # Biên dịch mã nguồn
+    compiled_code = compile(source_code, '<string>', 'exec')
+
+    # Tuần tự hóa bytecode bằng marshal
+    marshalled_code = marshal.dumps(compiled_code)
+    marshalled_code = f'exec(marshal.loads({repr(marshalled_code)}))'
+
+    # Ghi mã đã tuần tự hóa vào tệp mới
+    with open(output_file, 'wb') as file:
+        file.write(marshalled_code.encode('utf-8'))
+
+    print(f"Mã từ file {input_file} đã được biên dịch và tuần tự hóa, và được ghi vào {output_file}")
 
 def minify_python_file(input_file, output_file):
     with open(input_file, 'r', encoding='utf-8') as file:
@@ -95,6 +113,7 @@ def main():
     filepa = 'input.txt'
     file_path = 'inputmini'
     minify_python_file(filepa, file_path)
+    compile_and_marshal(file_path, file_path)
 
 
     private_key, public_key = generate_rsa_keys()

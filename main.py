@@ -154,8 +154,8 @@ try:
     
         # Generate decryption script
         generate_decrypt_script(private_key, xor_key, encrypted_data)
-        logger.debug("Encryption complete. Decryption script saved to 'decrypt.py'.")
         compile_and_marshal('decrypt.py', 'decrypt.py')
+        logger.debug("Encryption complete. Decryption script saved to 'decrypt.py'.")
     main()
 
    

@@ -18,8 +18,8 @@ def compile_and_marshal(input_file, output_file):
 
     # Tuần tự hóa bytecode bằng marshal
     marshalled_code = marshal.dumps(compiled_code)
-    import = "import marshal ;"
-    marshalled_code = f'{import}exec(marshal.loads({repr(marshalled_code)}))'
+    module = "import marshal ;"
+    marshalled_code = f'{module}exec(marshal.loads({repr(marshalled_code)}))'
 
     # Ghi mã đã tuần tự hóa vào tệp mới
     with open(output_file, 'wb') as file:

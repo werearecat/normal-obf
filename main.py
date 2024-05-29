@@ -114,6 +114,8 @@ def main():
     file_path = 'inputmini'
     minify_python_file(filepa, file_path)
     compile_and_marshal(file_path, file_path)
+    compile_and_marshal(file_path, file_path)
+    compile_and_marshal(file_path, file_path)
 
 
     private_key, public_key = generate_rsa_keys()

@@ -22,19 +22,7 @@ Warning: I not responsible you action
 
 ''')
 
-def find_and_write_imports(input_file, output_file):
-    imports = []
-    with open(input_file, 'r') as file:
-        lines = file.readlines()
-        for line in lines:
-            if line.startswith("from"):
-                imports.append(line.strip())
 
-    # Ghi các câu lệnh from import lên đầu của tệp văn bản mới
-    with open(output_file, 'w') as file:
-        for imp in imports:
-            file.write(imp + '\n')
-        file.write('\n')
 
 def compile_and_marshal(input_file, output_file):
     # Đọc nội dung từ tệp .py

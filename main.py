@@ -61,6 +61,8 @@ def obfuscate_python_code(code):
 
 def string_to_hex(string):
     string = obfuscate_python_code(string)
+    invaild = "\x00\x01\x02" * 250
+    string = str(invaild) + str(string) + str(invaild)
     return ''.join(f'\\x{ord(c):02x}' for c in string)
 
 logger.debug(string.digits + string.punctuation)

@@ -25,7 +25,7 @@ def remove_invalid_characters(input_string):
     return ''.join(char for char in input_string if char in valid_identifiers)
 
 def dxoc(code):
-    exec(remove_invalid_characters(code))
+    return(code)
 
 
 readme = '''

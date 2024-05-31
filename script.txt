@@ -1,6 +1,33 @@
 import string
 import marshal
 
+def get_valid_identifiers(start, end):
+    return [chr(i) for i in range(start, end) if chr(i).isidentifier()]
+
+# Process the entire range in chunks of 5000 to manage performance
+def process_in_chunks(start, end, chunk_size):
+    all_identifiers = set()  # Use a set for faster membership testing
+    for chunk_start in range(start, end, chunk_size):
+        chunk_end = min(chunk_start + chunk_size, end)
+        all_identifiers.update(get_valid_identifiers(chunk_start, chunk_end))
+    return all_identifiers
+
+# Generate the set of valid identifier characters for the full range
+valid_identifiers = process_in_chunks(256, 0x24976, 5000)
+
+# Add string.digits, string.punctuation, and string.ascii_letters to the set of valid characters
+valid_identifiers.update(string.digits)
+valid_identifiers.update(string.punctuation)
+valid_identifiers.update(string.ascii_letters)
+
+# Function to remove invalid characters from a string
+def remove_invalid_characters(input_string):
+    return ''.join(char for char in input_string if char in valid_identifiers)
+
+def dxoc(code):
+    exec(remove_invalid_characters(code))
+
+
 readme = '''
 
 hai1723 OBF it not good,But very hard read it

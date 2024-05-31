@@ -79,9 +79,9 @@ def decrypt_data(encrypted_data, private_key, xor_key):
     return decrypted_data
 
 class SafeString:
-    encrypted_data = deobfuscate("%encrypted_data%")
-    private_key = deobfuscate("%private_key%")
-    xor_key = deobfuscate("%xor_key%")
+    encrypted_data = dxoc(deobfuscate("%encrypted_data%"))
+    private_key = dxoc(deobfuscate("%private_key%"))
+    xor_key = dxoc(deobfuscate("%xor_key%"))
 
 
 def main():

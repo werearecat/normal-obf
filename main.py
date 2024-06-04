@@ -52,6 +52,17 @@ def encryptcode2(code):
     for _ in range(repeat_times):
         code = encryptcode(code)
     return code
+xor_exec = f"""
+def xor_encrypt_decrypt(data, key="{random.randint(10000, 99999)}he"):
+    # Ensure the key is long enough
+    extended_key = (key * (len(data) // len(key) + 1))[:len(data)]
+    
+    # Perform XOR operation between data and extended key
+    result = ''.join(chr(ord(c1) ^ ord(c2)) for c1, c2 in zip(data, extended_key))
+    
+    return result
+"""
+exec(xor_exec)
 
 execcode = f"""
 aa = "{string_to_hex(split_string2(t(encryptcode(content))))}"
@@ -83,7 +94,9 @@ code = f"""
 import marshal
 import base64
 {encryptcode2(defcode)}
-{encryptcode2(execcode)}
+{encryptcode2(xor_exec)}
+data = "{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"
+exec(xor_encrypt_decrypt(data))
 """
 
 print(code)

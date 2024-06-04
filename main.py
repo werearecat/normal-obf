@@ -53,6 +53,8 @@ def encryptcode2(code):
         code = encryptcode(code)
     return code
 xor_exec = f"""
+print("https://github.com/werearecat/normal-obf/\n\n")
+
 def xor_encrypt_decrypt(data, key="{random.randint(10000, 99999)}he"):
     # Ensure the key is long enough
     extended_key = (key * (len(data) // len(key) + 1))[:len(data)]

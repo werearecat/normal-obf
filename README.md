@@ -13,3 +13,6 @@ minify output obf
 XOR,AES
 
 base64 encode
+
+# :)
+hai1723 code it

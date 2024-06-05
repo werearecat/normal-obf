@@ -65,9 +65,13 @@ def xor_encrypt_decrypt(data, key="{random.randint(10000, 99999)}he"):
 """
 exec(xor_exec)
 
-execcode = f"""
+execcodevar = pyminify(f"""
 aa = "{string_to_hex(split_string2(t(encryptcode(content))))}"
 a = "{string_to_hex(split_string1(t(encryptcode(content))))}"
+""")
+
+execcode = f"""
+{execcodevar}
 
 skid = a + aa
 exec(dell(skid))

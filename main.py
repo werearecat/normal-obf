@@ -100,8 +100,7 @@ import marshal
 import base64
 {encryptcode2(xor_exec)}
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
-data = "{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"
-exec(xor_encrypt_decrypt(data))
+exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
 """
 
 with open('output.txt', 'w') as file:

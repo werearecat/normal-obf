@@ -3,9 +3,9 @@ import random
 import base64
 from python_minifier import minify as pyminify
 
+nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
 
-
-characters = list("abcdefghijklmnopqrstuvwxyz")
+characters = list(nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper())
 random.shuffle(characters)
 nopqrstuvwxyzabcdefghijklm = ''.join(characters)
 print(nopqrstuvwxyzabcdefghijklm)
@@ -82,14 +82,11 @@ encoded_nopqrstuvwxyzabcdefghijklm = base64.b64encode(nopqrstuvwxyzabcdefghijklm
 
 defcode = f"""
 
-letter = base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8') + base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8').upper()
-nopqrstuvwxyzabcdefghijklm = base64.b64decode("{encoded_nopqrstuvwxyzabcdefghijklm}").decode('utf-8')
-letter2 = nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper()
 
 def dell(code):
     letter = base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8') + base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8').upper()
     nopqrstuvwxyzabcdefghijklm = base64.b64decode("{encoded_nopqrstuvwxyzabcdefghijklm}").decode('utf-8')
-    letter2 = nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper()
+    letter2 = nopqrstuvwxyzabcdefghijklm
     obfuscated_code = code.translate(str.maketrans(letter2, letter))
     return obfuscated_code
 """

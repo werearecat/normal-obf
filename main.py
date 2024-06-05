@@ -1,6 +1,7 @@
 import marshal
 import random
 import base64
+from python_minifier import minify as pyminify
 
 
 
@@ -53,8 +54,6 @@ def encryptcode2(code):
         code = encryptcode(code)
     return code
 xor_exec = f"""
-print("https://github.com/werearecat/normal-obf/\n\n")
-
 def xor_encrypt_decrypt(data, key="{random.randint(10000, 99999)}he"):
     # Ensure the key is long enough
     extended_key = (key * (len(data) // len(key) + 1))[:len(data)]
@@ -102,4 +101,4 @@ exec(xor_encrypt_decrypt(data))
 """
 
 with open('output.txt', 'w') as file:
-    file.write(code)
+    file.write(pyminify(code))

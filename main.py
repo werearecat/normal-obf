@@ -32,7 +32,7 @@ def split_string2(text):
 
 def t(code):
     letter = "abcdefghijklmnopqrstuvwxyz" + "abcdefghijklmnopqrstuvwxyz".upper()
-    letter2 = f"{nopqrstuvwxyzabcdefghijklm}" + f"{nopqrstuvwxyzabcdefghijklm}".upper()
+    letter2 = f"{nopqrstuvwxyzabcdefghijklm}"
     print(letter)
     obfuscated_code = code.translate(str.maketrans(letter, letter2))
     return obfuscated_code

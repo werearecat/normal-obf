@@ -48,13 +48,22 @@ def encryptcode(codee):
 
 
 def encryptcode2(code):
-    repeat_times = random.randint(3, 6)
-    
-    for _ in range(repeat_times):
-        code = encryptcode(code)
+    code = encryptcode(code)
     return code
+
+random = f"hello{random.randint(1000000, 9999999)}hi"
+
+execcodevar = pyminify(f"""
+a{random} = "{string_to_hex(split_string1(t(encryptcode(content))))}"
+""")
+
+execcodevar1 = pyminify(f"""
+aa{random} = "{string_to_hex(split_string2(t(encryptcode(content))))}"
+""")
+
 xor_exec = f"""
-def xor_encrypt_decrypt(data, key="{random.randint(10000, 99999)}he"):
+{execcodevar1}
+def xor_encrypt_decrypt(data, key="{random}{random}"):
     # Ensure the key is long enough
     extended_key = (key * (len(data) // len(key) + 1))[:len(data)]
     
@@ -65,15 +74,8 @@ def xor_encrypt_decrypt(data, key="{random.randint(10000, 99999)}he"):
 """
 exec(xor_exec)
 
-execcodevar = pyminify(f"""
-aa = "{string_to_hex(split_string2(t(encryptcode(content))))}"
-a = "{string_to_hex(split_string1(t(encryptcode(content))))}"
-""")
-
 execcode = f"""
-{execcodevar}
-
-skid = a + aa
+skid = a{random} + aa{random}
 exec(dell(skid))
 """
 
@@ -81,7 +83,7 @@ abcdefghijklmnopqrstuvwxyz = base64.b64encode("abcdefghijklmnopqrstuvwxyz".encod
 encoded_nopqrstuvwxyzabcdefghijklm = base64.b64encode(nopqrstuvwxyzabcdefghijklm.encode('utf-8')).decode('utf-8')
 
 defcode = f"""
-
+{execcodevar}
 
 def dell(code):
     letter = base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8') + base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8').upper()

@@ -50,8 +50,8 @@ def encryptcode(codee):
 
 
 def encryptcode2(code):
-    code = encryptcode(code)
     code = code.replace("dell(", f"{randomcha}(")
+    code = encryptcode(code)
     return code
 
 random = f"hello{random.randint(1000000, 9999999)}hi"

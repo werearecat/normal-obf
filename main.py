@@ -8,6 +8,8 @@ nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
 characters = list(nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper())
 random.shuffle(characters)
 nopqrstuvwxyzabcdefghijklm = ''.join(characters)
+random.shuffle(characters)
+randomcha = ''.join(characters)
 print(nopqrstuvwxyzabcdefghijklm)
 
 def string_to_hex(string):
@@ -49,6 +51,7 @@ def encryptcode(codee):
 
 def encryptcode2(code):
     code = encryptcode(code)
+    code = code.replace("dell(", f"{randomcha}(")
     return code
 
 random = f"hello{random.randint(1000000, 9999999)}hi"

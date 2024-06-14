@@ -15,4 +15,4 @@ XOR,AES
 base64 encode
 
 # :)
-hai1723 code it
+hai1723 & skid code it

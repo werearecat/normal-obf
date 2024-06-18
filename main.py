@@ -64,6 +64,7 @@ def encryptcode2(code):
 {randomcha}message = ''.join(chr(value) for value in {randomcha}ascii_values)
 exec({randomcha}message)
 """
+    code = pyminify(code)
     code = encryptcode(code)
     print("\ndone!")
     return code

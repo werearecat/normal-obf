@@ -114,23 +114,5 @@ exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcod
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
 """
 
-abcdefghijklmnopqrstuvwxyz = base64.b64encode("abcdefghijklmnopqrstuvwxyz".encode('utf-8')).decode('utf-8')
-encoded_nopqrstuvwxyzabcdefghijklm = base64.b64encode(nopqrstuvwxyzabcdefghijklm1.encode('utf-8')).decode('utf-8')
-
-protectcode = f"""
-def delll(code):
-    letter = base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8') + base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8').upper()
-    nopqrstuvwxyzabcdefghijklm = base64.b64decode("{encoded_nopqrstuvwxyzabcdefghijklm}").decode('utf-8')
-    letter2 = nopqrstuvwxyzabcdefghijklm
-    obfuscated_code = code.translate(str.maketrans(letter2, letter))
-    return obfuscated_code
-exec(delll(code))
-"""
-protectcode = f"""
-import marshal
-import base64
-code = "{string_to_hex(t(pyminify(code)))}"
-{encryptcode2(protectcode)}
-"""
 with open('output.txt', 'w') as file:
-    file.write(pyminify(protectcode))
+    file.write(pyminify(code))

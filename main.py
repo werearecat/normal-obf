@@ -8,8 +8,12 @@ nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
 characters = list(nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper())
 random.shuffle(characters)
 nopqrstuvwxyzabcdefghijklm = ''.join(characters)
+
 random.shuffle(characters)
 randomcha = ''.join(characters)
+
+random.shuffle(characters)
+nopqrstuvwxyzabcdefghijklm1 = ''.join(characters)
 print(nopqrstuvwxyzabcdefghijklm)
 
 def string_to_hex(string):
@@ -35,6 +39,13 @@ def split_string2(text):
 def t(code):
     letter = "abcdefghijklmnopqrstuvwxyz" + "abcdefghijklmnopqrstuvwxyz".upper()
     letter2 = f"{nopqrstuvwxyzabcdefghijklm}"
+    print(letter)
+    obfuscated_code = code.translate(str.maketrans(letter, letter2))
+    return obfuscated_code
+
+def tt(code):
+    letter = "abcdefghijklmnopqrstuvwxyz" + "abcdefghijklmnopqrstuvwxyz".upper()
+    letter2 = f"{nopqrstuvwxyzabcdefghijklm1}"
     print(letter)
     obfuscated_code = code.translate(str.maketrans(letter, letter2))
     return obfuscated_code
@@ -103,6 +114,20 @@ import base64
 {encryptcode2(xor_exec)}
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
+"""
+
+abcdefghijklmnopqrstuvwxyz = base64.b64encode("abcdefghijklmnopqrstuvwxyz".encode('utf-8')).decode('utf-8')
+encoded_nopqrstuvwxyzabcdefghijklm = base64.b64encode(nopqrstuvwxyzabcdefghijklm.encode('utf-8')).decode('utf-8')
+
+defcode = f"""
+{execcodevar}
+
+def dell(code):
+    letter = base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8') + base64.b64decode("{abcdefghijklmnopqrstuvwxyz}").decode('utf-8').upper()
+    nopqrstuvwxyzabcdefghijklm = base64.b64decode("{encoded_nopqrstuvwxyzabcdefghijklm}").decode('utf-8')
+    letter2 = nopqrstuvwxyzabcdefghijklm
+    obfuscated_code = code.translate(str.maketrans(letter2, letter))
+    return obfuscated_code
 """
 
 with open('output.txt', 'w') as file:

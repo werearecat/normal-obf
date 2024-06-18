@@ -43,9 +43,6 @@ def t(code):
     obfuscated_code = code.translate(str.maketrans(letter, letter2))
     return obfuscated_code
 
-def string_to_ascii_values(input_string):
-    ascii_values = [ord(char) for char in input_string
-    return ascii_values
 
 with open('code.txt', 'r', encoding='utf-8') as file:
     content = file.read()
@@ -56,10 +53,19 @@ def encryptcode(codee):
     dump = marshal.dumps(compliecode)
     return f"exec(marshal.loads({dump}))"
 
+def string_to_ascii_values(s):
+    return [ord(c) for c in s]
 
 def encryptcode2(code):
+    print("\nencryptcode...")
     code = code.replace("dell(", f"{randomcha}(")
+    code = f"""
+{randomcha}ascii_values = {string_to_ascii_values(code)}
+{randomcha}message = ''.join(chr(value) for value in {randomcha}ascii_values)
+exec({randomcha}message)
+"""
     code = encryptcode(code)
+    print("\ndone!")
     return code
 
 random = f"hello{random.randint(1000000, 9999999)}hi"
@@ -112,17 +118,6 @@ exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcod
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
 """)
 
-protect = f"""
-ascii_values = {string_to_ascii_values(code)}
-message = ''.join(chr(value) for value in ascii_values)
-exec(message)
-"""
-
-protect_import = f"""
-import marshal
-import base64
-{encryptcode(protect)}
-"""
 
 with open('output.txt', 'w') as file:
-    file.write(pyminify(protect_import))
+    file.write(pyminify(code))

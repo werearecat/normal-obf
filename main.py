@@ -59,12 +59,6 @@ def string_to_ascii_values(s):
 def encryptcode2(code):
     print("\nencryptcode...")
     code = code.replace("dell(", f"{randomcha}(")
-    code = f"""
-{randomcha}ascii_values = {string_to_ascii_values(code)}
-{randomcha}message = ''.join(chr(value) for value in {randomcha}ascii_values)
-exec({randomcha}message)
-"""
-    code = pyminify(code)
     code = encryptcode(code)
     print("\ndone!")
     return code

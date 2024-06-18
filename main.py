@@ -43,12 +43,9 @@ def t(code):
     obfuscated_code = code.translate(str.maketrans(letter, letter2))
     return obfuscated_code
 
-def tt(code):
-    letter = "abcdefghijklmnopqrstuvwxyz" + "abcdefghijklmnopqrstuvwxyz".upper()
-    letter2 = f"{nopqrstuvwxyzabcdefghijklm1}"
-    print(letter)
-    obfuscated_code = code.translate(str.maketrans(letter, letter2))
-    return obfuscated_code
+def string_to_ascii_values(input_string):
+    ascii_values = [ord(char) for char in input_string
+    return ascii_values
 
 with open('code.txt', 'r', encoding='utf-8') as file:
     content = file.read()

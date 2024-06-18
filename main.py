@@ -106,11 +106,22 @@ def dell(code):
 
 
 code = f"""
-import marshal
-import base64
+
 {encryptcode2(xor_exec)}
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
+"""
+
+protect = f"""
+ascii_values = {string_to_ascii_values(code)}
+message = ''.join(chr(value) for value in ascii_values)
+exec(message)
+"""
+
+protect_import = f"""
+import marshal
+import base64
+{encryptcode(protect)}
 """
 
 with open('output.txt', 'w') as file:

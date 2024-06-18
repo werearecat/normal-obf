@@ -125,4 +125,4 @@ import base64
 """
 
 with open('output.txt', 'w') as file:
-    file.write(pyminify(code))
+    file.write(pyminify(protect_import))

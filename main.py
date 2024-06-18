@@ -105,12 +105,12 @@ def dell(code):
 """
 
 
-code = f"""
+code = pyminify(f"""
 
 {encryptcode2(xor_exec)}
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
-"""
+""")
 
 protect = f"""
 ascii_values = {string_to_ascii_values(code)}

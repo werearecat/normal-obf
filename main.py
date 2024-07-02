@@ -74,7 +74,18 @@ execcodevar1 = pyminify(f"""
 aa{random} = "{string_to_hex(split_string2(t(encryptcode(content))))}"
 """)
 
-
+xor_exec = f"""
+{execcodevar1}
+def xor_encrypt_decrypt(data, key="{random}{random}"):
+    # Ensure the key is long enough
+    extended_key = (key * (len(data) // len(key) + 1))[:len(data)]
+    
+    # Perform XOR operation between data and extended key
+    result = ''.join(chr(ord(c1) ^ ord(c2)) for c1, c2 in zip(data, extended_key))
+    
+    return result
+"""
+exec(xor_exec)
 
 execcode = f"""
 skid = a{random} + aa{random}
@@ -97,13 +108,11 @@ def dell(code):
 
 
 code = pyminify(f"""
-import zlib
-import codecs
-import base64
 import marshal
+import base64
 {encryptcode2(xor_exec)}
-exec("{string_to_hex(encryptcode2(defcode))}")
-exec("{string_to_hex(encryptcode2(execcode))}")
+exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
+exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
 """)
 
 

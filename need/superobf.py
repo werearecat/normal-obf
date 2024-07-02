@@ -72,7 +72,7 @@ def decrypt_code(encrypted_code):
 decrypt_code({repr(compressed_code)})
 '''
 
-    return pyminify(final_code)
+    return final_code
 
 # Example usage
 print(super_obfcode('print("Hello World!")'))

@@ -2,6 +2,7 @@ import marshal
 import random
 import base64
 from python_minifier import minify as pyminify
+import need
 
 nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
 

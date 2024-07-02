@@ -3,6 +3,7 @@ import random
 import base64
 from python_minifier import minify as pyminify
 from need.superobf import *
+import py_compile
 
 nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
 
@@ -118,3 +119,5 @@ exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execco
 
 with open('output.txt', 'w') as file:
     file.write(pyminify(super_obfcode(pyminify(code))))
+
+py_compile.compile('output.txt')

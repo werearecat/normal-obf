@@ -50,18 +50,18 @@ with open('code.txt', 'r', encoding='utf-8') as file:
 
 
 def encryptcode(codee):
+    print("\n[!] encryptcode...")
     compliecode = compile(codee, '<string>', 'exec')
     dump = marshal.dumps(compliecode)
+    print("\n[!] done!")
     return super_obfcode(f"exec(marshal.loads({dump}))")
 
 def string_to_ascii_values(s):
     return [ord(c) for c in s]
 
 def encryptcode2(code):
-    print("\nencryptcode...")
     code = code.replace("dell(", f"{randomcha}(")
     code = encryptcode(code)
-    print("\ndone!")
     return code
 
 random = f"hello{random.randint(1000000, 9999999)}hi"

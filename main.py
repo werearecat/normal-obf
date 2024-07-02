@@ -50,18 +50,18 @@ with open('code.txt', 'r', encoding='utf-8') as file:
 
 
 def encryptcode(codee):
-    print("\n[!] encryptcode...")
     compliecode = compile(codee, '<string>', 'exec')
     dump = marshal.dumps(compliecode)
-    print("\n[!] done!")
-    return super_obfcode(f"exec(marshal.loads({dump}))")
+    return f"exec(marshal.loads({dump}))"
 
 def string_to_ascii_values(s):
     return [ord(c) for c in s]
 
 def encryptcode2(code):
+    print("\nencryptcode...")
     code = code.replace("dell(", f"{randomcha}(")
     code = encryptcode(code)
+    print("\ndone!")
     return code
 
 random = f"hello{random.randint(1000000, 9999999)}hi"
@@ -108,15 +108,13 @@ def dell(code):
 
 
 code = pyminify(f"""
-import zlib
-import codecs
-import base64
 import marshal
-exec("{string_to_hex(encryptcode2(xor_exec))}")
+import base64
+{encryptcode2(xor_exec)}
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))
 """)
 
 
 with open('output.txt', 'w') as file:
-    file.write(pyminify(code))
+    file.write(super_obfcode(pyminify(code)))

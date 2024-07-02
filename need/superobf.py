@@ -94,7 +94,7 @@ def super_obfcode(codee):
     obfuscated_code = obfuscate_string(substituted_code)
     
     # Apply zlib compression
-    compressed_code = zlib.compress(obfuscated_code.encode())
+    compressed_code = zlib.compress(obfuscated_code.encode('latin1'))
     
     # Apply Huffman encoding
     huffman_encoded, huffman_codes = huffman_encode(compressed_code.decode('latin1'))
@@ -179,6 +179,7 @@ def custom_substitution(codee):
 
 def decrypt_code(encrypted_code):
     # Decode Huffman
+    huffman_codes = {<INSERT_HUFFMAN_CODES_HERE>}
     decoded_code = huffman_decode(encrypted_code, huffman_codes)
     
     # Decompress

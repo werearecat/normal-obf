@@ -108,8 +108,10 @@ def dell(code):
 
 
 code = pyminify(f"""
-import marshal
+import zlib
+import codecs
 import base64
+import marshal
 {encryptcode2(xor_exec)}
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(defcode)))}"))
 exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execcode)))}"))

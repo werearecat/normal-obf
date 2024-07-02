@@ -15,6 +15,7 @@ def custom_substitution(codee):
 
 def super_obfcode(codee):
     # Compile and marshal the code
+    print("[!] gen decrypt code")
     compiled_code = compile(codee, '<string>', 'exec')
     marshaled_code = marshal.dumps(compiled_code)
     
@@ -71,7 +72,7 @@ def decrypt_code(encrypted_code):
 
 decrypt_code({repr(compressed_code)})
 '''
-
+    
     return final_code
 
 # Example usage

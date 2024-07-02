@@ -3,7 +3,6 @@ import random
 import base64
 from python_minifier import minify as pyminify
 from need.superobf import *
-import need
 
 nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
 

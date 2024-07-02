@@ -2,7 +2,6 @@ import base64
 import codecs
 import marshal
 import zlib
-from python_minifier import minify as pyminify
 
 def xor_encrypt(codee, key=42):
     return ''.join(chr(ord(c) ^ key) for c in codee)

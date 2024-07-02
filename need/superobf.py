@@ -15,24 +15,30 @@ def custom_substitution(codee):
 
 def super_obfcode(codee):
     # Compile and marshal the code
-    print("[!] gen decrypt code")
+    print("\n[!] gen decrypt code")
     compiled_code = compile(codee, '<string>', 'exec')
+    print("\n[!] complie done")
     marshaled_code = marshal.dumps(compiled_code)
-    
+    print("\n[!] marshal done")
     # Apply Base64 encoding
     base64_encoded = base64.b64encode(marshaled_code).decode()
+    print("\n[!] base64 encode done")
 
     # Apply XOR encryption
     xor_encrypted = xor_encrypt(base64_encoded)
+    print("\n[!] xor encrypted done")
     
     # Apply custom substitution
     substituted_code = custom_substitution(xor_encrypted)
+    print("\n[!] xor substituted code done")
     
     # Apply obfuscation
     obfuscated_code = obfuscate_string(substituted_code)
+    print("\n[!] obfuscated code done")
     
     # Apply zlib compression
     compressed_code = zlib.compress(obfuscated_code.encode())
+    print("\n[!] zlib done")
     
     # Final decryption function
     final_code = f'''
@@ -72,7 +78,7 @@ def decrypt_code(encrypted_code):
 
 decrypt_code({repr(compressed_code)})
 '''
-    
+    print("\n[!] done code")
     return final_code
 
 # Example usage

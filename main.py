@@ -52,7 +52,7 @@ with open('code.txt', 'r', encoding='utf-8') as file:
 def encryptcode(codee):
     compliecode = compile(codee, '<string>', 'exec')
     dump = marshal.dumps(compliecode)
-    return f"exec(marshal.loads({dump}))"
+    return super_obfcode(f"exec(marshal.loads({dump}))")
 
 def string_to_ascii_values(s):
     return [ord(c) for c in s]

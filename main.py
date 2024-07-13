@@ -1,6 +1,8 @@
 import marshal
 import random
 import base64
+import random
+import codecs
 from python_minifier import minify as pyminify
 from need.superobf import *
 import py_compile

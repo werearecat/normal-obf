@@ -18,8 +18,17 @@ random.shuffle(characters)
 nopqrstuvwxyzabcdefghijklm1 = ''.join(characters)
 print(nopqrstuvwxyzabcdefghijklm)
 
+# def string_to_hex(string):
+#     return ''.join(f'\\x{ord(c):02x}' for c in string)
+
 def string_to_hex(string):
-    return ''.join(f'\\x{ord(c):02x}' for c in string)
+    newstring = ''
+    for i in string:
+        if random.choice([True, False]):
+            newstring += '\\x' + codecs.encode(i.encode(), 'hex').decode()
+        else:
+            newstring += '\\' + oct(ord(i))[2:]
+    return newstring
 
 def split_string(text):
     # Tính toán điểm chia chuỗi

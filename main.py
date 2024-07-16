@@ -20,6 +20,11 @@ random.shuffle(characters)
 nopqrstuvwxyzabcdefghijklm1 = ''.join(characters)
 print(nopqrstuvwxyzabcdefghijklm)
 
+
+
+def generate_var(length=10):
+    return ''.join(f'__{random.randint(0, 255):02x}__trash__' for _ in range(length))
+
 def string_to_hex(string):
     return ''.join(f'\\x{ord(c):02x}' for c in string)
 
@@ -67,7 +72,7 @@ def encryptcode2(code):
     print("\ndone!")
     return code
 
-random = f"hello{random.randint(1000000, 9999999)}hi"
+random = f"hello{random.randint(1000000, 9999999)}hi{generate_var(10)}"
 
 execcodevar = pyminify(f"""
 a{random} = "{string_to_hex(split_string1(t(encryptcode(content))))}"
@@ -121,6 +126,8 @@ exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execco
 
 with open('output.txt', 'w') as file:
     file.write(pyminify(super_obfcode(pyminify(code))))
+
+hai1723 = generate_var(100)
 
 obfcode = f"""
 import zlib

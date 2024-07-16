@@ -72,19 +72,19 @@ def encryptcode2(code):
     print("\ndone!")
     return code
 
-random = f"hello{random.randint(1000000, 9999999)}hi{generate_var(10)}"
+randoma = f"hello{random.randint(1000000, 9999999)}hi{generate_var(10)}"
 
 execcodevar = pyminify(f"""
-a{random} = "{string_to_hex(split_string1(t(encryptcode(content))))}"
+a{randoma} = "{string_to_hex(split_string1(t(encryptcode(content))))}"
 """)
 
 execcodevar1 = pyminify(f"""
-aa{random} = "{string_to_hex(split_string2(t(encryptcode(content))))}"
+aa{randoma} = "{string_to_hex(split_string2(t(encryptcode(content))))}"
 """)
 
 xor_exec = f"""
 {execcodevar1}
-def xor_encrypt_decrypt(data, key="{random}{random}"):
+def xor_encrypt_decrypt(data, key="{randoma}{randoma}"):
     # Ensure the key is long enough
     extended_key = (key * (len(data) // len(key) + 1))[:len(data)]
     
@@ -96,7 +96,7 @@ def xor_encrypt_decrypt(data, key="{random}{random}"):
 exec(xor_exec)
 
 execcode = f"""
-skid = a{random} + aa{random}
+skid = a{randoma} + aa{randoma}
 exec(dell(skid))
 """
 

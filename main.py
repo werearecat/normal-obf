@@ -126,31 +126,3 @@ exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execco
 
 with open('output.txt', 'w') as file:
     file.write(pyminify(super_obfcode(pyminify(code))))
-
-hai1723 = generate_var(100)
-
-obfcode = f"""
-import zlib
-import codecs
-import base64
-import marshal
-# https://github.com/werearecat/normal-obf
-# obf code
-{hai1723} = ""
-"""
-
-def string_to_hex(s):
-    return ''.join(f'\\x{ord(c):02x}' for c in s)
-
-def generate_random_zeroes(length):
-    return '\\x00' * length
-
-with open('output.txt', 'r', encoding='utf-8') as file:
-    for line in file:
-        obfcode += f"""
-{hai1723} += "{string_to_hex(line.strip())}" + "{generate_random_zeroes(random.randint(1, 25))}"
-"""
-
-obfcode += f"\n\nexec({hai1723}.replace('\\x00', ''))"
-with open('output.txt', 'w', encoding='utf-8') as file:
-    file.write(obfcode)

@@ -23,7 +23,7 @@ print(nopqrstuvwxyzabcdefghijklm)
 
 
 def generate_var(length=10):
-    return ''.join(f'__{random.randint(0, 255):02x}__IDK__' for _ in range(length))
+    return ''.join(f'__{random.randint(0, 255):02x}__gay__' for _ in range(length))
 
 def string_to_hex(string):
     return ''.join(f'\\x{ord(c):02x}' for c in string)
@@ -145,7 +145,7 @@ def generate_random_zeroes(length):
 with open('output.txt', 'r', encoding='utf-8') as file:
     for line in file:
         obfcode += f"""
-\n{hai1723} += "{(string_to_hex(line.strip())}" + "{generate_random_zeroes(random.randint(1, 10))}" + "{generate_random_zeroes(random.randint(1, 10))}"
+\n{hai1723} += "{string_to_hex(line.strip())}" + "{generate_random_zeroes(random.randint(1, 25))}"
 """
 
 obfcode += f"\n\nexec({hai1723}.replace('\\x00', ''))"

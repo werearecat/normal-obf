@@ -22,7 +22,7 @@ print(nopqrstuvwxyzabcdefghijklm)
 
 
 
-def generate_var(length=10):
+def generate_var(length):
     return ''.join(f'__{random.randint(0, 255):02x}__trash__' for _ in range(length))
 
 def string_to_hex(string):

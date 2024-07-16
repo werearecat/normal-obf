@@ -140,3 +140,7 @@ with open('output.txt', 'r', encoding='utf-8') as file:
         obfcode += f"""
 \n{hai1723} += "{split_string1(string_to_hex(line.strip()))}" + "{generate_random_zeroes(random.randint(1, 10))}" + "{split_string2(string_to_hex(line.strip()))}"
 """
+
+obfcode += f"\n\nexec({hai1723})"
+with open('output.txt', 'w') as file:
+    file.write(obfcode)

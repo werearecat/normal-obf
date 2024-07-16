@@ -22,8 +22,8 @@ print(nopqrstuvwxyzabcdefghijklm)
 
 
 
-def generate_var(length):
-    return ''.join(f'__{random.randint(0, 255):02x}__trash__' for _ in range(length))
+def generate_var(length=10):
+    return ''.join(f'__{random.randint(0, 255):02x}__gay__' for _ in range(length))
 
 def string_to_hex(string):
     return ''.join(f'\\x{ord(c):02x}' for c in string)

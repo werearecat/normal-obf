@@ -7,7 +7,7 @@ from python_minifier import minify as pyminify
 from need.superobf import *
 import py_compile
 
-nopqrstuvwxyzabcdefghijklm = "abcdefghijklmnopqrstuvwxyz"
+nopqrstuvwxyzabcdefghijklm = "绉仃蕜媴眥鷔姕肦粼忪棨撰埧掦訕椃葉雄蟥咾疪睉愨唲栜种獐涒墶昺耓單礜鹑夊螔袸錭鎡魥堾寧綫釄緑弼茔宨途煀屎靥"
 
 characters = list(nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper())
 random.shuffle(characters)

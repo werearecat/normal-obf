@@ -4,8 +4,8 @@ import base64
 import random
 import codecs
 from python_minifier import minify as pyminify
-from need.superobf import *
 import py_compile
+import bz2
 
 nopqrstuvwxyzabcdefghijklm = "绉仃蕜媴眥鷔姕肦粼忪棨撰埧掦訕椃葉雄蟥咾疪睉愨唲栜种獐涒墶昺耓單礜鹑夊螔袸錭鎡魥堾寧綫釄緑弼茔宨途煀屎靥"
 
@@ -60,7 +60,9 @@ with open('code.txt', 'r', encoding='utf-8') as file:
 def encryptcode(codee):
     compliecode = compile(codee, '<string>', 'exec')
     dump = marshal.dumps(compliecode)
-    return f"exec(marshal.loads({dump}))"
+    code = f"exec(marshal.loads({dump}))"
+    code = bz2.compress(code)
+    return f"exec(bz2.decompress({code}))"
 
 def string_to_ascii_values(s):
     return [ord(c) for c in s]

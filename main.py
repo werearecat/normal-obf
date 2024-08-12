@@ -127,4 +127,4 @@ exec(xor_encrypt_decrypt("{string_to_hex(xor_encrypt_decrypt(encryptcode2(execco
 
 
 with open('output.txt', 'w') as file:
-    file.write(pyminify(super_obfcode(pyminify(code))))
+    file.write(pyminify(pyminify(code)))

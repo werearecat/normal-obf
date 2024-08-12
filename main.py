@@ -9,7 +9,7 @@ import bz2
 
 nopqrstuvwxyzabcdefghijklm = "绉仃蕜媴眥鷔姕肦粼忪棨撰埧掦訕椃葉雄蟥咾疪睉愨唲栜种獐涒墶昺耓單礜鹑夊螔袸錭鎡魥堾寧綫釄緑弼茔宨途煀屎靥"
 
-characters = list(nopqrstuvwxyzabcdefghijklm + nopqrstuvwxyzabcdefghijklm.upper())
+characters = list(nopqrstuvwxyzabcdefghijklm)
 random.shuffle(characters)
 nopqrstuvwxyzabcdefghijklm = ''.join(characters)
 
@@ -58,11 +58,10 @@ with open('code.txt', 'r', encoding='utf-8') as file:
 
 
 def encryptcode(codee):
-    compliecode = compile(codee, '<string>', 'exec')
-    dump = marshal.dumps(compliecode)
-    code = f"exec(marshal.loads({dump}))"
-    code = bz2.compress(code)
-    return f"exec(bz2.decompress({code}))"
+    compiled_code = compile(codee, '<string>', 'exec')
+    compressed_code = bz2.compress(marshal.dumps(compiled_code))
+    compressed_code_str = repr(compressed_code)
+    return f"exec(bz2.decompress(marshal.loads({compressed_code_str})))"
 
 def string_to_ascii_values(s):
     return [ord(c) for c in s]
